@@ -1,4 +1,4 @@
-// Graph.java
+
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class Graph {
         adjacencyList.computeIfAbsent(to, k -> new ArrayList<>()).add(new Edge(to, from, weight));
     }
 
-    public List<Edge> getEdges(String vertex) {
+    public Collection<? extends Edge> getEdges(String vertex) {
         return adjacencyList.getOrDefault(vertex, new ArrayList<>());
     }
 

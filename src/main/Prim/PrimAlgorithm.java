@@ -1,3 +1,4 @@
+// PrimAlgorithm.java - ИЗМЕНЕНИЕ
 import java.util.*;
 
 public class PrimAlgorithm {
@@ -7,6 +8,7 @@ public class PrimAlgorithm {
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
         List<Edge> mstEdges = new ArrayList<>();
         int totalCost = 0;
+        int operationsCount = 0;
         long startTime = System.currentTimeMillis();
 
         visited.add(startVertex);
@@ -14,7 +16,7 @@ public class PrimAlgorithm {
 
         while (!pq.isEmpty()) {
             Edge edge = pq.poll();
-
+            operationsCount++;
             if (!visited.contains(edge.to)) {
                 visited.add(edge.to);
                 mstEdges.add(edge);
@@ -30,6 +32,6 @@ public class PrimAlgorithm {
 
         long endTime = System.currentTimeMillis();
         long executionTime = endTime - startTime;
-        return new Result(mstEdges, totalCost, visited.size(), pq.size(), executionTime);
+        return new Result(mstEdges, totalCost, visited.size(), operationsCount, executionTime);
     }
 }
